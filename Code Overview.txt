@@ -1,0 +1,43 @@
+Code Overview
+
+This overview will introduce you to the major classes of ElementParser and give you enough information to find your way around the code. It complements the read me document which has some simple usage examples to get you started quickly.
+
+ElementParser is architected in layers. The lowest layer is a simple-minded parser that spins through an NSString and spits out (ie hands to the delegate) "chunks" corresponding to things like tags, comments, entities, etc. It is defined in the HTML category of NSString and looks like this:
+
+	+(void)parseHTML:(NSString*) source 
+			delegate:(id)delegate 
+			selector:(SEL)selector 
+			context: (void*) context;
+
+You'll notice that many of the classes in are just different flavors of Chunks to be served up to the delegate of the parseHTML method. These include: Chunk, CDataChunk, DoctypeChunk, CommentChunk, EntityChunk, TagChunk and TxtChunk.
+
+The ElementParser class itself is the namesake of the library. It uses the low-level chunk parser to build a tree of Element objects. 
+
+Element is the basic building block for the document tree. Each of these correspond to an element (ie tag) in the document. Unlike other DOM builders, only Elements are modeled in the tree... everything else (even attributes) are parsed out only when needed.
+
+ElementParser supports one-shot parsing like:
+
+	-(DocumentRoot*)parseHTML:(NSString*)source;
+	
+		and 
+	
+	-(DocumentRoot*)parseXML:(NSString*)source;
+
+and it support incremental parsing with:
+
+	-(DocumentRoot*)beginParsing;
+	-(void)continueParsingString:(NSString*)string;
+	-(void)finishParsing;
+
+
+Note: DocumentRoot is a subclass of Element (see below) to hold all the top-level Elements in the document. 
+
+One of the most powerful parts of ElementParser is its ability to fire high-level callbacks into your code when css-style selectors are matched. You register these with the ElementParser before parsing and then are handed matching elements as they come across.
+
+URLParser ties an NSURLConnection and an ElementParser together to provide a very convenient way to parse documents out in the world leveraging the incremental features of the parser.
+
+CSSSelector and CSSSelectorPart are used to model a CSS selector. These provide a lightweight way to access elements within an XML or HTML document. 
+
+CSSSelectorMatcher and CSSPartMatcher are used during the evaluation of a CSS selector against an Element tree. 
+
+That's it. Comments welcome at feedback@touchtankapps.com.

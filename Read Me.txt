@@ -1,0 +1,48 @@
+Element Parser
+5/4/09
+
+Accessing and manipulating HTML and XML in Cocoa can be incredibly frustrating. There are two existing choices (NSXMLParser and lib2xml) but neither work with HTML or "real-world" XML documents that are often not "perfect". Their interfaces put all the work on you to map between the document and your program's domain objects. They force you to write code that is hard to write and maintain. Somehow, something that starts out looking straightforward ends up becoming
+a science project or worse. 
+
+ElementParser is lightweight framework to provide easy access to xml and html content. Rather than get lost in the complexities of the HTML and XML specifications, it aspires to not obscure their essential simplicity. It doesn't do everything, but aspires to do "just enough".
+
+I hope you like it.
+
+Let's begin with some examples.
+
+	document = [Element parseHTML: source];
+
+Document is a special element that holds the top level element(s) (e.g. <html> or <rss>)  of your document. You now have a tree of Element objects which you can walk using methods like firstChild, nextSybling and parent. You can also access the data each contains with methods like tagName, attributes and contentsText. Nice start. And sometimes this is enough. But let's say you don't want to walk the tree all the time to find the data you need. How about:
+
+	linkElement = [element selectElement: @"div.nextLink a"];
+	
+Here we're using an css-type selector to locate and return a matching element. Nice. Now we can parse a document and conveniently find elements of interest. (Yes, there is a corresponding selectElements: method that returns all matches.)
+
+Next, let's bind together your world of objects and the world of elements more closely. To do this, we'll use the ElementParser directly to register callbacks into your code when an element is found (and its contents parsed).
+
+	ElementParser* parser = [[ElementParser alloc] initWithCallbacksDelegate: self];
+	[parser performSelector:@selector(processFeedElement:) forElementsMatching: @"feed"];
+	documentRoot = [parser parseXML: source];
+	
+Your code might look like this:
+
+	-(FeedItem*)processFeedItem:(Element*)element{
+		FeedItem* feedItem = [[[FeedItem alloc] init] autorelease];
+		feedItem.title = [[element selectElement: @"title"] contentsText];
+		feedItem.description = [[element selectElement: @"description"] contentsText];
+		feedItem.enclosure = [[element selectElement: @"title"] contentsText];
+		return feedItem; // optional, sets this element's domainObject property
+	}
+
+Finally, all these html and xml documents often reside on the web. Wouldn't it be nice if we could use the pattern above to process the documents incrementally as soon as they appear? How about:
+
+	URLParser* parser = [[URLParser alloc] initWithCallbackDelegate: self];
+	[parser performSelector:@selector(processChannelElement:) forElementsMatching: @"channel"];
+	[parser performSelector:@selector(processFeedElement:) forElementsMatching: @"feed"];
+	[parser parseURL: myURL];
+
+There is alot more under the covers but this may be all you need. Hopefully its just enough! We'd love your feedback at feedback@touchtankapps.com.
+
+Terms of Use
+The ElementParser framework (and its source code) is free of charge for non commercial uses. For other commercial uses, a fee of $100 is required per product. (That's about 2 hours of your time, right?) Support plans are also available. Please contact sales@touchtankapps.com.
+
