@@ -170,7 +170,7 @@ unichar parseEntity(CFStringInlineBuffer* buffer, CFIndex index, CFIndex* len){
 		else{ 
 			//named enityt
 			if (ENTITIES_MAP == nil)
-				ENTITIES_MAP = [[NSDictionary alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"HTML Entities" ofType: nil]];
+				ENTITIES_MAP = [[NSDictionary alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"HTML Entities" ofType: @"plist"]];
 			if (!ENTITIES_MAP) return 0;
 			NSString* key = [(NSString*)buffer->theString substringWithRange: NSMakeRange(index + 1, (*len) - 2)];
 			NSString* result = [ENTITIES_MAP objectForKey: key];

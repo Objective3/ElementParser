@@ -45,10 +45,12 @@
 	NSObject* domainObject;
 }
 
-/**	
- *	The attributes in the element
+/** 
+ *	Returns a dictionary of attributes name/values. 
+ *	If an attribute had no value in the source (e.g. <table noborders>) then the value will be NSNull
+ *	If the attributes have not yet been parsed, this will parser them first.
  */
-@property (nonatomic, retain) NSDictionary* attributes;
+@property (nonatomic, readonly) NSDictionary* attributes;
 
 
 /**	
@@ -126,14 +128,6 @@
  *	If the attributes have not yet been parsed, this will parser them first.
  */
 -(BOOL)hasAttribute:(NSString*)attr;
-
-
-/** 
- *	Returns a dictionary of attributes name/values. 
- *	If an attribute had no value in the source (e.g. <table noborders>) then the value will be NSNull
- *	If the attributes have not yet been parsed, this will parser them first.
- */
--(NSDictionary*)attributes;
 
 
 /** 

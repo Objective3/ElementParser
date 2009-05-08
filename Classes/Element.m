@@ -27,12 +27,13 @@
 #import "CSSSelectorMatcher.h"
 #import "ElementParser.h"
 
-@interface Element (Private)
+@interface Element ()
+-(void)setAttributes:(NSDictionary*)dict;
 @end
 
 @implementation Element
 
-@synthesize attributes, nextElement, nextSybling, parent, contentsLength, contentsText, key, containsMarkup, domainObject;
+@synthesize nextElement, nextSybling, parent, contentsLength, contentsText, key, containsMarkup, domainObject;
 
 
 +(DocumentRoot*)parseHTML:(NSString*)source{
@@ -97,7 +98,7 @@
 }
 
 -(NSString*)attribute:(NSString*)attr{
-	return [self.attributes objectForKey: attr];
+	return [[self attributes] objectForKey: attr];
 }
 
 // warning, may contain empty classnames
@@ -117,10 +118,15 @@
 
 -(NSDictionary*)attributes{
 	if (!attributesParsed){
-		self.attributes = [source parseElementAttributesWithRange: range caseSensative: [self caseSensative]];
+		[self setAttributes: [source parseElementAttributesWithRange: range caseSensative: [self caseSensative]]];
 		attributesParsed = YES;
 	}
 	return attributes;
+}
+
+-(void)setAttributes:(NSDictionary*)dict{
+	[attributes release];
+	attributes = [dict retain];
 }
 
 -(Element*)firstChild{
@@ -230,14 +236,14 @@
 			? [self tagName] 
 			: [[self tagName] lowercaseString];
 	return key;
-}
+}	
 
 -(NSString*)description{
 	NSMutableString* result = [NSMutableString string];
 	if (!source) return result;//root element has no source
 	[result appendString: @"<"];
 	[result appendString: [self tagName]];
-	for (NSString* att in [self.attributes allKeys]){
+	for (NSString* att in [[self attributes] allKeys]){
 		[result appendFormat: @" %@='%@'", att, [attributes objectForKey: att]];
 	}
 	if ([self isEmptyTag])
