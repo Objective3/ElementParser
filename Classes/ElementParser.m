@@ -71,6 +71,7 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 }
 
 -(DocumentRoot*)parseHTML:(NSString*)source{
+	if (!source) return nil;
 	self.mode = ElementParserModeHTML;
 	[self prepareParseWithString: source];
 	[self parseMoreWithPartial: NO];
@@ -79,6 +80,7 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 }
 
 -(DocumentRoot*)parseXML:(NSString*)source{
+	if (!source) return nil;
 	self.mode = ElementParserModeXML;
 	[self prepareParseWithString: source];
 	[self parseMoreWithPartial: NO];

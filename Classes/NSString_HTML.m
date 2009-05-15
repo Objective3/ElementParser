@@ -484,10 +484,7 @@ static inline int moveBufferToIndex(CFStringInlineBuffer *buffer, CFIndex index)
 +(void)parseHTML:(NSString*) source delegate:(id)delegate selector:(SEL)selector context: (void*) context{
 	int index = 0;
 	[self parseHTML: source delegate: delegate selector: selector context: context index: &index partial: NO];		
-//	if (index != [source length])
-//		NSLog(@"%i != %i", index, [source length]);
 	NSAssert2(index == [source length], @"%i != %i", index, [source length]);
-//	assert(index == [source length]);
 } 
 
 typedef struct{

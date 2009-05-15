@@ -33,6 +33,7 @@
 	NSString* contentType;
 	NSStringEncoding encoding;
 	NSObject* connectionDelegate;
+	NSMutableData* partialStringData;
 }
 
 @property(retain, nonatomic) NSObject* connectionDelegate;
@@ -41,6 +42,7 @@
 @property(retain, nonatomic) NSError* lastError;
 @property(retain, nonatomic) NSString* contentType;
 @property NSStringEncoding encoding;
+@property (retain, nonatomic) NSMutableData* partialStringData;
 
 
 -(id)initWithCallbackDelegate:(id)delegate;

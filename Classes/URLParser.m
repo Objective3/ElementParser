@@ -27,7 +27,7 @@
 
 @implementation URLParser
 
-@synthesize parser, connection, lastError, contentType, encoding, connectionDelegate;
+@synthesize parser, connection, lastError, contentType, encoding, connectionDelegate, partialStringData;
 
 - (id)initWithCallbackDelegate:(id)delegate{
 	parser = [[ElementParser alloc] init];
@@ -41,6 +41,7 @@
 	[connection release];
 	[parser release];
 	[lastError release];
+	[partialStringData release];
 	[super dealloc];
 }
 
@@ -91,8 +92,24 @@
 
 - (void)connection:(NSURLConnection *)aConnection didReceiveData:(NSData *)data {
 	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-	NSString* moreSource = [[NSString alloc] initWithData: data encoding: encoding];
+	if (partialStringData){
+		[partialStringData appendData: data];
+		data = partialStringData;
+	}
+	int less;
+	NSString* moreSource = nil;
+	for (less = 0; less <= 3 && !moreSource; less++)
+		moreSource = [[NSString alloc] initWithBytes: data.bytes length: (data.length - less) encoding: encoding];
+	NSAssert(moreSource, @"unable to make string from data");
+	if (--less){//decrement b/c we incremented before loop exit test
+		char* charPtr = (char*) data.bytes;
+		unichar c = *(charPtr + data.length - less);
+		NSLog(@"Partial string received storing %i bytes, first char=%i", less, c);
+		self.partialStringData = [[NSMutableData alloc] initWithBytes: charPtr + (data.length - less) length: less];
+		[partialStringData release]; // setter has retained it
+	}
 	[parser continueParsingString: moreSource];
+	[moreSource release];
 	if ([connectionDelegate respondsToSelector:@selector(connection:didReceiveData:)])
 		[connectionDelegate connection:connection didReceiveData: data];
 	[pool release];
