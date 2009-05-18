@@ -352,7 +352,7 @@ static inline int moveBufferToIndex(CFStringInlineBuffer *buffer, CFIndex index)
 	CFIndex maxSourceIndex = [source length];
 	CFStringInlineBuffer buffer;
 	buffer.theString = (CFStringRef)source;
-	buffer.rangeToBuffer.location = 0;
+	buffer.rangeToBuffer.location = buffer.rangeToBuffer.length = 0;
 	
 	TagChunk* tag = [[TagChunk alloc] initWithString: source range: NSMakeRange(0,0) tagName: nil];
 	CommentChunk* comment = [[CommentChunk alloc] initWithString: source range: NSMakeRange(0,0)];
@@ -475,7 +475,7 @@ static inline int moveBufferToIndex(CFStringInlineBuffer *buffer, CFIndex index)
 	[cdata release];
 	[doctype release];
 	[text release];
-	
+
 	*sourceIndex = index + buffer.rangeToBuffer.location;
 	[pool release];
 }
