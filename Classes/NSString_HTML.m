@@ -34,7 +34,7 @@
 #import "DoctypeChunk.h"
 #import "TxtChunk.h"
 
-#define MAX_OUT_BUFFER_LENGTH 20000
+#define OUT_BUFFER_LENGTH 20000
 #define MAX_READ_BUFFER_LENGTH 60000
 static const NSDictionary* ENTITIES_MAP;
 
@@ -502,7 +502,7 @@ typedef struct{
 	NSMutableString* result = [NSMutableString stringWithCapacity: [self length]];
 	StripTagsContext context;
 	context.result = result;
-	context.outBufferLength = MIN([self length], MAX_OUT_BUFFER_LENGTH);
+	context.outBufferLength = MIN([self length], OUT_BUFFER_LENGTH);
 	context.outBuffer = malloc(sizeof(unichar) * context.outBufferLength);
 	context.writeIndex = 0;
 	context.inScriptElement = NO;
@@ -521,12 +521,18 @@ typedef struct{
 
 -(id)chunk:(Chunk*)chunk context:(StripTagsContext*)context{
 	//write the  outBuffer if there isn't enough room for the  whole chunk
-	if (context->writeIndex > context->outBufferLength - chunk.range.length){
+	if (context->writeIndex + chunk.range.length > context->outBufferLength){
 		CFStringAppendCharacters((CFMutableStringRef)context->result, context->outBuffer, context->writeIndex);
 		context->writeIndex = 0;
-		assert(chunk.range.length < context->outBufferLength);
+		if (chunk.range.length > context->outBufferLength){
+			// need to grow buffer
+			free(context->outBuffer);
+			context->outBufferLength = chunk.range.length;
+			context->outBuffer = malloc(sizeof(unichar) * context->outBufferLength);
+		}
 	}
-	
+	assert(context->writeIndex + chunk.range.length <= context->outBufferLength);
+		
 	CFRange bufferRangeToAppend = CFRangeMake(0, 0);
 	CFStringInlineBuffer* buffer = chunk.buffer;
 
