@@ -73,6 +73,14 @@
 	NSLog(@"%i runs processing feed: %f", runs, [NSDate timeIntervalSinceReferenceDate] - start);	
 }
 
++(void)testNestedMatches{
+	NSString* source = @"<html><body><div class='x'><a href='1' /></div><a href='2' /></body></html>";
+	ElementParser* parser = [[[ElementParser alloc] init] autorelease];
+	DocumentRoot* root = [parser parseHTML: source];
+	NSArray* result = [root selectElements: @"div.x a"];
+	assert([result count] == 1);
+}
+
 +(void)testFeed{
 	NSString* file = [[NSBundle mainBundle] pathForResource: @"gizmodo" ofType: @"xml"];
 	NSString* source = [NSString stringWithContentsOfFile: file];

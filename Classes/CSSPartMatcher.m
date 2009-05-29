@@ -28,12 +28,11 @@
 
 @implementation CSSPartMatcher
 
-@synthesize matchedElement, scopeElement, matchedPartIndex;
+@synthesize matchedElement, matchedPartIndex;
 
 -(id)initWithElement:(Element*) anElement selectorMatcher:(CSSSelectorMatcher*)aSelectorMatcher{
 	self = [super init];
 	matchedElement = [anElement retain];
-	scopeElement = [anElement retain];
 	selectorMatcher = aSelectorMatcher;
 	return self;
 }
@@ -41,12 +40,12 @@
 -(void)dealloc{
 //	NSLog(@"pruned: %@", [self description]);
 	[matchedElement release];
-	[scopeElement release];
 	[matchersForNextPart release];
 	[super dealloc];
 }
 
--(void)pruneMatchesForElement: (Element*)anElement{
+/* we don't do this yet...
+ -(void)pruneMatchesForElement: (Element*)anElement{
 	if (!matchersForNextPart) return;
 	for (CSSPartMatcher* match in matchersForNextPart){
 		if ([match scopeElement] == anElement)
@@ -55,13 +54,11 @@
 			[match pruneMatchesForElement: anElement];
 	}
 }
+*/
 
 -(void)addNextMatch:(Element*)nextElement withIndex:(int)index{
 	CSSPartMatcher* nextMatch = [[CSSPartMatcher alloc] initWithElement: nextElement selectorMatcher: selectorMatcher];
 	nextMatch.matchedPartIndex = index;
-	CSSVerb nextNextVerb = [[selectorMatcher selector] verbAfterIndex: index];
-	if (nextNextVerb == CSSVerbSuccessor)
-		[nextMatch setScopeElement: self.matchedElement];
 	if (!matchersForNextPart) 
 		matchersForNextPart = [[NSMutableArray alloc] initWithCapacity: 4];
 	[matchersForNextPart addObject: nextMatch];
@@ -76,7 +73,7 @@
 		if (nextVerb == CSSVerbAny)
 			verbMatches = YES;
 		else if (nextVerb == CSSVerbDescendant)
-			verbMatches = YES;//because we prune
+			verbMatches = [nextElement hasAncestor: self.matchedElement];//wasteful to not prune matches as they go out of scope
 		else if (nextVerb == CSSVerbChild)
 			verbMatches = nextElement.parent == self.matchedElement; 
 		else if (nextVerb == CSSVerbSuccessor)
@@ -84,18 +81,17 @@
 	}
 	
 	BOOL completeMatch = verbMatches && (index == [[selectorMatcher selector] countOfParts] - 1);
+	
 	if (matchersForNextPart){
-		for (CSSPartMatcher* match in matchersForNextPart)
+		for (CSSPartMatcher* match in matchersForNextPart){
 			completeMatch = completeMatch || [match matchNextElement: nextElement forIndex: index + 1];
+		}
 	}
 
-	if (completeMatch)
-		return YES;
-	
-	if (verbMatches)
+	if (!completeMatch && verbMatches)//actually part and verb match
 		[self addNextMatch: nextElement withIndex: index];
 
-	return NO;
+	return completeMatch;
 }
 
 -(CSSSelectorPart*)matchedPart{

@@ -33,17 +33,15 @@
  */
 @interface CSSPartMatcher : NSObject {
 	CSSSelectorMatcher* selectorMatcher; // not retained
-	Element* scopeElement;
 	Element* matchedElement;
 	int matchedPartIndex;
 	NSMutableArray* matchersForNextPart;
 }
-@property (nonatomic, retain) Element* scopeElement;
 @property (nonatomic, retain) Element* matchedElement;
 @property int matchedPartIndex;
 
 -(id)initWithElement:(Element*) anElement selectorMatcher:(CSSSelectorMatcher*)aSelectorMatcher;
--(void)pruneMatchesForElement:(Element*)anElement;
+//-(void)pruneMatchesForElement:(Element*)anElement;
 -(BOOL)matchNextElement:(Element*) nextElement forIndex: (int) index;
 
 @end

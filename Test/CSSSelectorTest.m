@@ -85,6 +85,7 @@
 	[self assertWithCSSSelectorString: @"foo#ids > bar.huh + img[title]"];
 	
 }
+
 +(void)testAll{
 	[self testCSSSelector];
 }

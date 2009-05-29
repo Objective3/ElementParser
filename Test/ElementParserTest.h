@@ -28,6 +28,7 @@
 @interface ElementParser (Test)
 
 +(void)testElementParser;
++(void)testNestedMatches;
 +(void)testAll;
 
 
