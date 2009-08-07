@@ -186,7 +186,8 @@
 	Element* e = self;
 	while (e){
 		[matcher matchElement: e];
-		e = e.nextElement;
+		// e = e.nextElement;
+		e = [e nextElementWithinScope: self];
 	}
 	NSArray* result = [[[matcher matches] retain] autorelease];
 	[matcher release];
