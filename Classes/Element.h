@@ -150,6 +150,11 @@
  */
 -(NSArray*)childElements;
 
+/**	
+ *	An array of child Elements in document order
+ */
+-(NSArray*)syblingElements;
+
 
 /** 
  *	The first child Element for this element (or nil if none).

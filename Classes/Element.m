@@ -217,6 +217,16 @@
 	return kids;
 }
 
+-(NSArray*)syblingElements{
+	NSMutableArray* syblings = [NSMutableArray array];
+	Element* e = self;
+	while (e){
+		[syblings addObject: e];
+		e = e.nextSybling;
+	}
+	return syblings;
+}
+
 -(NSDictionary*)contentsOfChildren{
 	NSMutableDictionary* result = [NSMutableDictionary dictionary];
 	Element* e = [self firstChild];
