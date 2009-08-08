@@ -1,0 +1,361 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F4E18B3102DD2FA00320118 /* CDataChunk.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E1891102DD2FA00320118 /* CDataChunk.h */; };
+		3F4E18B4102DD2FA00320118 /* CDataChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E1892102DD2FA00320118 /* CDataChunk.m */; };
+		3F4E18B5102DD2FA00320118 /* Chunk.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E1893102DD2FA00320118 /* Chunk.h */; };
+		3F4E18B6102DD2FA00320118 /* Chunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E1894102DD2FA00320118 /* Chunk.m */; };
+		3F4E18B7102DD2FA00320118 /* CommentChunk.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E1895102DD2FA00320118 /* CommentChunk.h */; };
+		3F4E18B8102DD2FA00320118 /* CommentChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E1896102DD2FA00320118 /* CommentChunk.m */; };
+		3F4E18B9102DD2FA00320118 /* CSSPartMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E1897102DD2FA00320118 /* CSSPartMatcher.h */; };
+		3F4E18BA102DD2FA00320118 /* CSSPartMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E1898102DD2FA00320118 /* CSSPartMatcher.m */; };
+		3F4E18BB102DD2FA00320118 /* CSSSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E1899102DD2FA00320118 /* CSSSelector.h */; };
+		3F4E18BC102DD2FA00320118 /* CSSSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E189A102DD2FA00320118 /* CSSSelector.m */; };
+		3F4E18BD102DD2FA00320118 /* CSSSelectorMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E189B102DD2FA00320118 /* CSSSelectorMatcher.h */; };
+		3F4E18BE102DD2FA00320118 /* CSSSelectorMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E189C102DD2FA00320118 /* CSSSelectorMatcher.m */; };
+		3F4E18BF102DD2FA00320118 /* CSSSelectorPart.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E189D102DD2FA00320118 /* CSSSelectorPart.h */; };
+		3F4E18C0102DD2FA00320118 /* CSSSelectorPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E189E102DD2FA00320118 /* CSSSelectorPart.m */; };
+		3F4E18C1102DD2FA00320118 /* DoctypeChunk.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E189F102DD2FA00320118 /* DoctypeChunk.h */; };
+		3F4E18C2102DD2FA00320118 /* DoctypeChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E18A0102DD2FA00320118 /* DoctypeChunk.m */; };
+		3F4E18C3102DD2FA00320118 /* DocumentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E18A1102DD2FA00320118 /* DocumentRoot.h */; };
+		3F4E18C4102DD2FA00320118 /* DocumentRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E18A2102DD2FA00320118 /* DocumentRoot.m */; };
+		3F4E18C5102DD2FA00320118 /* Element.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E18A3102DD2FA00320118 /* Element.h */; };
+		3F4E18C6102DD2FA00320118 /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E18A4102DD2FA00320118 /* Element.m */; };
+		3F4E18C7102DD2FA00320118 /* ElementParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E18A5102DD2FA00320118 /* ElementParser.h */; };
+		3F4E18C8102DD2FA00320118 /* ElementParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E18A6102DD2FA00320118 /* ElementParser.m */; };
+		3F4E18C9102DD2FA00320118 /* EntityChunk.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E18A7102DD2FA00320118 /* EntityChunk.h */; };
+		3F4E18CA102DD2FA00320118 /* EntityChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E18A8102DD2FA00320118 /* EntityChunk.m */; };
+		3F4E18CB102DD2FA00320118 /* NSString_HTML.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E18A9102DD2FA00320118 /* NSString_HTML.h */; };
+		3F4E18CC102DD2FA00320118 /* NSString_HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E18AA102DD2FA00320118 /* NSString_HTML.m */; };
+		3F4E18CD102DD2FA00320118 /* ProcessingInstructionChunk.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E18AB102DD2FA00320118 /* ProcessingInstructionChunk.h */; };
+		3F4E18CE102DD2FA00320118 /* ProcessingInstructionChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E18AC102DD2FA00320118 /* ProcessingInstructionChunk.m */; };
+		3F4E18CF102DD2FA00320118 /* TagChunk.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E18AD102DD2FA00320118 /* TagChunk.h */; };
+		3F4E18D0102DD2FA00320118 /* TagChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E18AE102DD2FA00320118 /* TagChunk.m */; };
+		3F4E18D1102DD2FA00320118 /* TxtChunk.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E18AF102DD2FA00320118 /* TxtChunk.h */; };
+		3F4E18D2102DD2FA00320118 /* TxtChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E18B0102DD2FA00320118 /* TxtChunk.m */; };
+		3F4E18D3102DD2FA00320118 /* URLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E18B1102DD2FA00320118 /* URLParser.h */; };
+		3F4E18D4102DD2FA00320118 /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E18B2102DD2FA00320118 /* URLParser.m */; };
+		AA747D9F0F9514B9006C5449 /* ElementParser_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ElementParser_Prefix.pch */; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3F4E1891102DD2FA00320118 /* CDataChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDataChunk.h; path = Classes/CDataChunk.h; sourceTree = "<group>"; };
+		3F4E1892102DD2FA00320118 /* CDataChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDataChunk.m; path = Classes/CDataChunk.m; sourceTree = SOURCE_ROOT; };
+		3F4E1893102DD2FA00320118 /* Chunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chunk.h; path = Classes/Chunk.h; sourceTree = "<group>"; };
+		3F4E1894102DD2FA00320118 /* Chunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Chunk.m; path = Classes/Chunk.m; sourceTree = SOURCE_ROOT; };
+		3F4E1895102DD2FA00320118 /* CommentChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentChunk.h; path = Classes/CommentChunk.h; sourceTree = "<group>"; };
+		3F4E1896102DD2FA00320118 /* CommentChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentChunk.m; path = Classes/CommentChunk.m; sourceTree = SOURCE_ROOT; };
+		3F4E1897102DD2FA00320118 /* CSSPartMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSPartMatcher.h; path = Classes/CSSPartMatcher.h; sourceTree = "<group>"; };
+		3F4E1898102DD2FA00320118 /* CSSPartMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSPartMatcher.m; path = Classes/CSSPartMatcher.m; sourceTree = SOURCE_ROOT; };
+		3F4E1899102DD2FA00320118 /* CSSSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSSelector.h; path = Classes/CSSSelector.h; sourceTree = "<group>"; };
+		3F4E189A102DD2FA00320118 /* CSSSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSSelector.m; path = Classes/CSSSelector.m; sourceTree = SOURCE_ROOT; };
+		3F4E189B102DD2FA00320118 /* CSSSelectorMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSSelectorMatcher.h; path = Classes/CSSSelectorMatcher.h; sourceTree = "<group>"; };
+		3F4E189C102DD2FA00320118 /* CSSSelectorMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSSelectorMatcher.m; path = Classes/CSSSelectorMatcher.m; sourceTree = SOURCE_ROOT; };
+		3F4E189D102DD2FA00320118 /* CSSSelectorPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSSelectorPart.h; path = Classes/CSSSelectorPart.h; sourceTree = "<group>"; };
+		3F4E189E102DD2FA00320118 /* CSSSelectorPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSSelectorPart.m; path = Classes/CSSSelectorPart.m; sourceTree = SOURCE_ROOT; };
+		3F4E189F102DD2FA00320118 /* DoctypeChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoctypeChunk.h; path = Classes/DoctypeChunk.h; sourceTree = "<group>"; };
+		3F4E18A0102DD2FA00320118 /* DoctypeChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoctypeChunk.m; path = Classes/DoctypeChunk.m; sourceTree = SOURCE_ROOT; };
+		3F4E18A1102DD2FA00320118 /* DocumentRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocumentRoot.h; path = Classes/DocumentRoot.h; sourceTree = "<group>"; };
+		3F4E18A2102DD2FA00320118 /* DocumentRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentRoot.m; path = Classes/DocumentRoot.m; sourceTree = SOURCE_ROOT; };
+		3F4E18A3102DD2FA00320118 /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Element.h; path = Classes/Element.h; sourceTree = "<group>"; };
+		3F4E18A4102DD2FA00320118 /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Element.m; path = Classes/Element.m; sourceTree = SOURCE_ROOT; };
+		3F4E18A5102DD2FA00320118 /* ElementParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElementParser.h; path = Classes/ElementParser.h; sourceTree = "<group>"; };
+		3F4E18A6102DD2FA00320118 /* ElementParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElementParser.m; path = Classes/ElementParser.m; sourceTree = SOURCE_ROOT; };
+		3F4E18A7102DD2FA00320118 /* EntityChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntityChunk.h; path = Classes/EntityChunk.h; sourceTree = "<group>"; };
+		3F4E18A8102DD2FA00320118 /* EntityChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntityChunk.m; path = Classes/EntityChunk.m; sourceTree = SOURCE_ROOT; };
+		3F4E18A9102DD2FA00320118 /* NSString_HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSString_HTML.h; path = Classes/NSString_HTML.h; sourceTree = "<group>"; };
+		3F4E18AA102DD2FA00320118 /* NSString_HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSString_HTML.m; path = Classes/NSString_HTML.m; sourceTree = SOURCE_ROOT; };
+		3F4E18AB102DD2FA00320118 /* ProcessingInstructionChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProcessingInstructionChunk.h; path = Classes/ProcessingInstructionChunk.h; sourceTree = "<group>"; };
+		3F4E18AC102DD2FA00320118 /* ProcessingInstructionChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProcessingInstructionChunk.m; path = Classes/ProcessingInstructionChunk.m; sourceTree = SOURCE_ROOT; };
+		3F4E18AD102DD2FA00320118 /* TagChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagChunk.h; path = Classes/TagChunk.h; sourceTree = "<group>"; };
+		3F4E18AE102DD2FA00320118 /* TagChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagChunk.m; path = Classes/TagChunk.m; sourceTree = SOURCE_ROOT; };
+		3F4E18AF102DD2FA00320118 /* TxtChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TxtChunk.h; path = Classes/TxtChunk.h; sourceTree = "<group>"; };
+		3F4E18B0102DD2FA00320118 /* TxtChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TxtChunk.m; path = Classes/TxtChunk.m; sourceTree = SOURCE_ROOT; };
+		3F4E18B1102DD2FA00320118 /* URLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLParser.h; path = Classes/URLParser.h; sourceTree = "<group>"; };
+		3F4E18B2102DD2FA00320118 /* URLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLParser.m; path = Classes/URLParser.m; sourceTree = SOURCE_ROOT; };
+		AA747D9E0F9514B9006C5449 /* ElementParser_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementParser_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D2AAC07E0554694100DB518D /* libElementParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libElementParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libElementParser.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* ElementParser */ = {
+			isa = PBXGroup;
+			children = (
+				3F4E1923102DD47000320118 /* Headers */,
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = ElementParser;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3F4E1892102DD2FA00320118 /* CDataChunk.m */,
+				3F4E1894102DD2FA00320118 /* Chunk.m */,
+				3F4E1896102DD2FA00320118 /* CommentChunk.m */,
+				3F4E1898102DD2FA00320118 /* CSSPartMatcher.m */,
+				3F4E189A102DD2FA00320118 /* CSSSelector.m */,
+				3F4E189C102DD2FA00320118 /* CSSSelectorMatcher.m */,
+				3F4E189E102DD2FA00320118 /* CSSSelectorPart.m */,
+				3F4E18A0102DD2FA00320118 /* DoctypeChunk.m */,
+				3F4E18A2102DD2FA00320118 /* DocumentRoot.m */,
+				3F4E18A4102DD2FA00320118 /* Element.m */,
+				3F4E18A6102DD2FA00320118 /* ElementParser.m */,
+				3F4E18A8102DD2FA00320118 /* EntityChunk.m */,
+				3F4E18AA102DD2FA00320118 /* NSString_HTML.m */,
+				3F4E18AC102DD2FA00320118 /* ProcessingInstructionChunk.m */,
+				3F4E18AE102DD2FA00320118 /* TagChunk.m */,
+				3F4E18B0102DD2FA00320118 /* TxtChunk.m */,
+				3F4E18B2102DD2FA00320118 /* URLParser.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA747D9E0F9514B9006C5449 /* ElementParser_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		3F4E1923102DD47000320118 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				3F4E1891102DD2FA00320118 /* CDataChunk.h */,
+				3F4E1893102DD2FA00320118 /* Chunk.h */,
+				3F4E1895102DD2FA00320118 /* CommentChunk.h */,
+				3F4E1897102DD2FA00320118 /* CSSPartMatcher.h */,
+				3F4E1899102DD2FA00320118 /* CSSSelector.h */,
+				3F4E189B102DD2FA00320118 /* CSSSelectorMatcher.h */,
+				3F4E189D102DD2FA00320118 /* CSSSelectorPart.h */,
+				3F4E189F102DD2FA00320118 /* DoctypeChunk.h */,
+				3F4E18A1102DD2FA00320118 /* DocumentRoot.h */,
+				3F4E18A3102DD2FA00320118 /* Element.h */,
+				3F4E18A5102DD2FA00320118 /* ElementParser.h */,
+				3F4E18A7102DD2FA00320118 /* EntityChunk.h */,
+				3F4E18A9102DD2FA00320118 /* NSString_HTML.h */,
+				3F4E18AB102DD2FA00320118 /* ProcessingInstructionChunk.h */,
+				3F4E18AD102DD2FA00320118 /* TagChunk.h */,
+				3F4E18AF102DD2FA00320118 /* TxtChunk.h */,
+				3F4E18B1102DD2FA00320118 /* URLParser.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA747D9F0F9514B9006C5449 /* ElementParser_Prefix.pch in Headers */,
+				3F4E18B3102DD2FA00320118 /* CDataChunk.h in Headers */,
+				3F4E18B5102DD2FA00320118 /* Chunk.h in Headers */,
+				3F4E18B7102DD2FA00320118 /* CommentChunk.h in Headers */,
+				3F4E18B9102DD2FA00320118 /* CSSPartMatcher.h in Headers */,
+				3F4E18BB102DD2FA00320118 /* CSSSelector.h in Headers */,
+				3F4E18BD102DD2FA00320118 /* CSSSelectorMatcher.h in Headers */,
+				3F4E18BF102DD2FA00320118 /* CSSSelectorPart.h in Headers */,
+				3F4E18C1102DD2FA00320118 /* DoctypeChunk.h in Headers */,
+				3F4E18C3102DD2FA00320118 /* DocumentRoot.h in Headers */,
+				3F4E18C5102DD2FA00320118 /* Element.h in Headers */,
+				3F4E18C7102DD2FA00320118 /* ElementParser.h in Headers */,
+				3F4E18C9102DD2FA00320118 /* EntityChunk.h in Headers */,
+				3F4E18CB102DD2FA00320118 /* NSString_HTML.h in Headers */,
+				3F4E18CD102DD2FA00320118 /* ProcessingInstructionChunk.h in Headers */,
+				3F4E18CF102DD2FA00320118 /* TagChunk.h in Headers */,
+				3F4E18D1102DD2FA00320118 /* TxtChunk.h in Headers */,
+				3F4E18D3102DD2FA00320118 /* URLParser.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC07D0554694100DB518D /* ElementParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "ElementParser" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ElementParser;
+			productName = ElementParser;
+			productReference = D2AAC07E0554694100DB518D /* libElementParser.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "ElementParser" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 0867D691FE84028FC02AAC07 /* ElementParser */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* ElementParser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F4E18B4102DD2FA00320118 /* CDataChunk.m in Sources */,
+				3F4E18B6102DD2FA00320118 /* Chunk.m in Sources */,
+				3F4E18B8102DD2FA00320118 /* CommentChunk.m in Sources */,
+				3F4E18BA102DD2FA00320118 /* CSSPartMatcher.m in Sources */,
+				3F4E18BC102DD2FA00320118 /* CSSSelector.m in Sources */,
+				3F4E18BE102DD2FA00320118 /* CSSSelectorMatcher.m in Sources */,
+				3F4E18C0102DD2FA00320118 /* CSSSelectorPart.m in Sources */,
+				3F4E18C2102DD2FA00320118 /* DoctypeChunk.m in Sources */,
+				3F4E18C4102DD2FA00320118 /* DocumentRoot.m in Sources */,
+				3F4E18C6102DD2FA00320118 /* Element.m in Sources */,
+				3F4E18C8102DD2FA00320118 /* ElementParser.m in Sources */,
+				3F4E18CA102DD2FA00320118 /* EntityChunk.m in Sources */,
+				3F4E18CC102DD2FA00320118 /* NSString_HTML.m in Sources */,
+				3F4E18CE102DD2FA00320118 /* ProcessingInstructionChunk.m in Sources */,
+				3F4E18D0102DD2FA00320118 /* TagChunk.m in Sources */,
+				3F4E18D2102DD2FA00320118 /* TxtChunk.m in Sources */,
+				3F4E18D4102DD2FA00320118 /* URLParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/ElementParser.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ElementParser_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = ElementParser;
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/ElementParser.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ElementParser_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = ElementParser;
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.0;
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "ElementParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "ElementParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
