@@ -144,6 +144,15 @@
  */
 -(BOOL)isEqualToString:(NSString*)string;
 
+/**
+ * Convenience methods for getting NSObjects from elements and their children
+ */
+- (NSString*)contentsTextOfChildElement:(NSString*)selector;
+
+- (NSNumber*)contentsNumber;
+
+- (NSNumber*)contentsNumberOfChildElement:(NSString*)selector;
+
 
 /**	
  *	An array of child Elements in document order

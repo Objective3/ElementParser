@@ -159,6 +159,18 @@
 	return contentsText;
 }
 
+- (NSString*)contentsTextOfChildElement:(NSString*)selector {
+	return [[self selectElement:selector] contentsText];
+}
+
+- (NSNumber*)contentsNumber {
+	return [NSNumber numberWithInt:[[self contentsText] intValue]];
+}
+
+- (NSNumber*)contentsNumberOfChildElement:(NSString*)selector {
+	return [[self selectElement:selector] contentsNumber];
+}
+
 -(NSString*)contentsSource{
 	NSRange contentsRange = NSMakeRange(NSMaxRange(range), contentsLength);
 	NSString* result = [source substringWithRange: contentsRange];
