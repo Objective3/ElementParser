@@ -272,7 +272,7 @@ NSString* createStringFromBuffer(CFStringInlineBuffer* buffer, CFIndex index, CF
 
 
 -(NSDictionary*)parseElementAttributesWithRange:(NSRange) range caseSensative:(BOOL)caseSensative{
-	NSMutableDictionary* attributes = [[NSMutableDictionary alloc] initWithCapacity: 8];
+	NSMutableDictionary* attributes = [[[NSMutableDictionary alloc] initWithCapacity: 8] autorelease];
 
 	CFStringInlineBuffer localBuffer;
 	CFStringInitInlineBuffer((CFStringRef)self, &localBuffer, CFRangeMake(range.location, range.length));
@@ -371,7 +371,7 @@ static inline int moveBufferToIndex(CFStringInlineBuffer *buffer, CFIndex index)
 		while (delegateWantsToContinue && (c = CFStringGetCharacterFromInlineBuffer(&buffer, index))){
 						
 			int tagLen;
-			int len;
+			int len = 0;
 			int interior;
 			Chunk* chunk = nil;
 			Chunk* partialChunk = nil;
