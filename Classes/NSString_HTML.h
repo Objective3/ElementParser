@@ -31,6 +31,11 @@
  */
 CFIndex lenThruOr(CFStringInlineBuffer* buffer, CFIndex index, const char a, const char b);
 
+/**
+  * spins though an attribute/value pair inside an element
+ */
+
+CFIndex lenAttributeAndValue(CFStringInlineBuffer* buffer, CFIndex index, NSString** attrName, NSString**attrValue);
 
 /**
  *	spins through string buffer until a white character is encountered.
@@ -74,6 +79,12 @@ CFIndex lenEntityName(CFStringInlineBuffer* buffer, CFIndex index);
  */
 CFIndex lenThru(CFStringInlineBuffer* buffer, CFIndex index, const char* suffix);
 
+/**
+ *	Spins through buffer until the supplied suffix is encountered. Does not
+ *  match on characters with single or double quotes.
+ *	Returns 0 if end of buffer is encountered before the suffix.
+ */
+CFIndex lenThruRespectingQuotes(CFStringInlineBuffer* buffer, CFIndex index, const char* suffix);
 
 /**
  *	Returns the character corresponding to the entity at the supplied index in the buffer

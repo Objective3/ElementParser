@@ -113,6 +113,36 @@ CFIndex lenEntityName(CFStringInlineBuffer* buffer, CFIndex index){
 	return 0;
 }
 
+CFIndex lenThruRespectingQuotes(CFStringInlineBuffer* buffer, CFIndex index, const char* suffix){
+	CFIndex startIndex = index;
+	int numCharsMatched = 0;
+	const char* suffixStart = suffix;
+	char openQuote = 0;
+	while (*suffix){
+		unichar c = CFStringGetCharacterFromInlineBuffer(buffer, index);
+		if (c==0)
+			return 0;
+		else if (c == openQuote)
+			openQuote = 0;
+		else if ((c == *suffix) && (openQuote == 0)){
+			suffix++;
+			numCharsMatched++;
+		}
+		else {
+			// reset the suffix ptr
+			if (numCharsMatched){
+				index -= numCharsMatched;
+				suffix = suffixStart;
+				numCharsMatched = 0;
+			}
+			if ((openQuote == 0) && ((c == '"') || (c == '\'')))
+				openQuote = c;
+		}
+		index++;
+	}
+	return index - startIndex;
+}
+
 CFIndex lenThru(CFStringInlineBuffer* buffer, CFIndex index, const char* suffix){
 	CFIndex startIndex = index;
 	int numCharsMatched = 0;
@@ -378,7 +408,7 @@ static inline int moveBufferToIndex(CFStringInlineBuffer *buffer, CFIndex index)
 
 			if (c == '<'){
 				if (tagLen = lenToken(&buffer, index + 1)){
-					interior = lenThru(&buffer, index + tagLen + 1, ">") + tagLen - 1;
+					interior = lenThruRespectingQuotes(&buffer, index + tagLen + 1, ">") + tagLen - 1;
 					if (interior > 0){
 						tag.tagName = createStringFromBuffer(&buffer, index + 1, tagLen);
 						[tag.tagName release];

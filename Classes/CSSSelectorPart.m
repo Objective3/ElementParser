@@ -105,6 +105,7 @@
 			(*index)++;
 		else{
 			len = lenToken(buffer, (*index));
+			assert(len);
 			self.tag = createStringFromBuffer(buffer, *index, len);
 			[self.tag release];//retained by property setter
 			(*index) += len;
