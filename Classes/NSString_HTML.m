@@ -107,7 +107,7 @@ CFIndex lenEntityName(CFStringInlineBuffer* buffer, CFIndex index){
 		if (c==';') 
 			return len + 1;
 		if (((c < 'a') || (c > 'z')) && ((c < 'A') || (c > 'Z')) && ((c < '0') || (c > '9')) && (c != '#'))
-			break;
+			return NSNotFound;
 		len++;
 	}
 	return 0;
@@ -458,12 +458,17 @@ static inline int moveBufferToIndex(CFStringInlineBuffer *buffer, CFIndex index)
 					partialChunk = tag;
 			}
 			else if (c == '&'){
-				interior = lenEntityName(&buffer, index)-2;
-				if (interior > 0){
-					chunk = entity;				
-					len = interior + 2;
+				// complicated by the fact that what appears to be an entity may infact just be text
+				CFIndex entityLen = lenEntityName(&buffer, index);
+				if (entityLen == NSNotFound){
+					len = lenThruOr(&buffer, index + 1, '<', '&') + 1;
+					chunk = text;
 				}
-				else 
+				else if (entityLen > 0){
+					chunk = entity;				
+					len = entityLen;
+				}
+				else
 					partialChunk = entity;
 			}
 			else{
@@ -486,7 +491,7 @@ static inline int moveBufferToIndex(CFStringInlineBuffer *buffer, CFIndex index)
 			
 			// hand the chunk to the delgate
 			chunk.range = NSMakeRange(index + buffer.rangeToBuffer.location, len);
-//			NSLog([NSString stringWithFormat: @"%@: %@", [[chunk class] humanName], [source substringWithRange: chunk.range]]);
+//			NSLog(@"%@: %@", [[chunk class] humanName], [source substringWithRange: chunk.range]);
 			chunk.buffer = &buffer;		
 			delegateWantsToContinue = [delegate performSelector: selector withObject: chunk withObject: context] != nil;
 			index += len;

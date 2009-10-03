@@ -31,12 +31,18 @@
 */
 
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	/* pre populate source with the source.html file */
+	NSString* path = [[NSBundle mainBundle] pathForResource: @"source" ofType: @"html"];
+	NSStringEncoding encoding;
+	self.source = [NSString stringWithContentsOfFile: path usedEncoding: &encoding error: NULL];
+	textView.text = self.source;
+	self.pattern = @"*";
 }
-*/
+
 
 
 /*

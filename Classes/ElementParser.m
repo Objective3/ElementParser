@@ -217,7 +217,12 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 }
 
 -(id)buildElementTreeWithChunk:(Chunk*)chunk context:(void*)builder{
-//	NSLog([chunk description]);
+/*
+	used to hunt down problem strings in example documents
+	BOOL breakpoint = [[chunk description] rangeOfString: @""].location != NSNotFound;
+	if (breakpoint)
+		NSLog(@"found breakpoint");
+*/	
 	self.lastChunk = chunk;
 	if (![chunk isKind: ChunkKindText]) 
 		lastOpened.containsMarkup = YES;

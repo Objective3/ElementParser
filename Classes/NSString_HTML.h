@@ -67,8 +67,8 @@ CFIndex lenToken(CFStringInlineBuffer* buffer, CFIndex index);
 CFIndex startsWithStr(CFStringInlineBuffer* buffer, CFIndex index, const char* prefix);
 
 /**
- *	Parses an entity name and returns its length. Returns 0 if end of buffer or 
- *	an invalid entity is encountered.
+ *	Parses an entity name and returns its length. Returns 0 if end of buffer
+ * is encountered or NSNotFound of an invalid entity is encountered.
  */
 CFIndex lenEntityName(CFStringInlineBuffer* buffer, CFIndex index);
 
