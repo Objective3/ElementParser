@@ -283,7 +283,8 @@
 		for (Element* ee = e; ee; ee = [ee parent])
 			[result appendString: @"   "];			
 		[result appendString: [e description]];
-		[result appendString: @"\n"];
+		NSString* txt = (e.containsMarkup) ? @"..." : e.contentsText;
+		[result appendFormat: @"%@\n", txt];
 		e = e.nextElement;
 	}
 	return result;

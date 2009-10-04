@@ -33,6 +33,7 @@
 		DC65743E1042E7C500BE3D62 /* TxtChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = DC65742C1042E7C500BE3D62 /* TxtChunk.m */; };
 		DC65743F1042E7C500BE3D62 /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DC65742E1042E7C500BE3D62 /* URLParser.m */; };
 		DC903C0610777B8000F65535 /* source.html in Resources */ = {isa = PBXBuildFile; fileRef = DC903C0510777B8000F65535 /* source.html */; };
+		DCBCF2791078D72F00B671ED /* source2.html in Resources */ = {isa = PBXBuildFile; fileRef = DCBCF2781078D72F00B671ED /* source2.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		DC65742D1042E7C500BE3D62 /* URLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLParser.h; path = ../Classes/URLParser.h; sourceTree = SOURCE_ROOT; };
 		DC65742E1042E7C500BE3D62 /* URLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLParser.m; path = ../Classes/URLParser.m; sourceTree = SOURCE_ROOT; };
 		DC903C0510777B8000F65535 /* source.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source.html; sourceTree = "<group>"; };
+		DCBCF2781078D72F00B671ED /* source2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source2.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			children = (
 				2899E5210DE3E06400AC0155 /* DemoViewController.xib */,
 				DC903C0510777B8000F65535 /* source.html */,
+				DCBCF2781078D72F00B671ED /* source2.html */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Demo-Info.plist */,
 			);
@@ -249,6 +252,7 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* DemoViewController.xib in Resources */,
 				DC903C0610777B8000F65535 /* source.html in Resources */,
+				DCBCF2791078D72F00B671ED /* source2.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

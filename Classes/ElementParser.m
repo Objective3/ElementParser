@@ -224,11 +224,14 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 		NSLog(@"found breakpoint");
 */	
 	self.lastChunk = chunk;
-	if (![chunk isKind: ChunkKindText]) 
-		lastOpened.containsMarkup = YES;
-	if (![chunk isKind: ChunkKindTag]) return self;
-	TagChunk* tag = (TagChunk*) chunk;
-	if ([tag isCloseTag])
+	TagChunk* tag = [chunk isKind: ChunkKindTag] ? (TagChunk*) chunk : nil;
+
+	if (![chunk isKind: ChunkKindText] && ![tag isCloseTag]) 
+		[self parentElement].containsMarkup = YES;
+	
+	if (!tag)
+		return self;
+	else if ([tag isCloseTag])
 		[self closeElementWithTag: tag];
 	else {
 		Element* element = [[Element alloc] initWithTag: tag caseSensative: mode == ElementParserModeXML];
