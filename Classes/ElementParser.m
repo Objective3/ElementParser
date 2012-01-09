@@ -63,6 +63,7 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 -(void)dealloc{
 	[tagStack release];
 	[root release];
+	[lastChunk release];
 	if (callbackMethods){
 		CFRelease(callbackMethods);
 		[callbackMatchers release];
