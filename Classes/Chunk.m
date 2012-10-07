@@ -30,15 +30,11 @@
 @synthesize source, range, buffer;
 
 -(id)initWithString: (NSString*)aSource range:(NSRange)aRange{
-	source = [aSource retain];
+	source = aSource;
 	range = aRange;
 	return self;
 }
 
--(void)dealloc{
-	[source release];
-	[super dealloc];
-}
 
 -(CFRange)rangeInBuffer{
 	if (buffer)

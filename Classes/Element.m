@@ -39,16 +39,12 @@
 +(DocumentRoot*)parseHTML:(NSString*)source{
 	ElementParser* parser = [[ElementParser alloc] init];
 	DocumentRoot* root = [parser parseHTML: source];
-	[[root retain] autorelease];
-	[parser release];
 	return root;
 }
 
 +(DocumentRoot*)parseXML:(NSString*)source{
 	ElementParser* parser = [[ElementParser alloc] init];
 	DocumentRoot* root = [parser parseXML: source];
-	[[root retain] autorelease];
-	[parser release];
 	return root;
 }
 
@@ -62,14 +58,6 @@
 	return self;
 }
 
--(void)dealloc{
-	[attributes release];
-	[contentsText release];
-	[nextElement release];
-	[nextSybling release];
-	[key release];
-	[super dealloc];
-}
 
 
 -(void)setRange: (NSRange)aRange{
@@ -125,8 +113,7 @@
 }
 
 -(void)setAttributes:(NSDictionary*)dict{
-	[attributes release];
-	attributes = [dict retain];
+	attributes = [[NSMutableDictionary alloc] initWithDictionary:dict];
 }
 
 -(Element*)firstChild{
@@ -181,7 +168,6 @@
 	if (!cssSelectorString) return [NSArray array];
 	CSSSelector* selector = [[CSSSelector alloc] initWithString: cssSelectorString];
 	NSArray* result = [self elementsWithCSSSelector: selector];
-	[selector release];
 	return result;
 }
 
@@ -189,7 +175,6 @@
 	if (!cssSelectorString) return nil;
 	CSSSelector* selector = [[CSSSelector alloc] initWithString: cssSelectorString];
 	Element* result = [self elementWithCSSSelector: selector];
-	[selector release];
 	return result;
 }
 
@@ -201,8 +186,7 @@
 		// e = e.nextElement;
 		e = [e nextElementWithinScope: self];
 	}
-	NSArray* result = [[[matcher matches] retain] autorelease];
-	[matcher release];
+	NSArray* result = [matcher matches];
 	return result;
 }
 
@@ -215,7 +199,6 @@
 		e = [e nextElementWithinScope: self];
 	}
 	Element* result = [matcher firstMatch];
-	[matcher release];
 	return result;
 }
 

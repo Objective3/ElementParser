@@ -32,17 +32,11 @@
 
 -(id)initWithElement:(Element*) anElement selectorMatcher:(CSSSelectorMatcher*)aSelectorMatcher{
 	self = [super init];
-	matchedElement = [anElement retain];
+	matchedElement = anElement;
 	selectorMatcher = aSelectorMatcher;
 	return self;
 }
 
--(void)dealloc{
-//	NSLog(@"pruned: %@", [self description]);
-	[matchedElement release];
-	[matchersForNextPart release];
-	[super dealloc];
-}
 
 /* we don't do this yet...
  -(void)pruneMatchesForElement: (Element*)anElement{
@@ -62,7 +56,6 @@
 	if (!matchersForNextPart) 
 		matchersForNextPart = [[NSMutableArray alloc] initWithCapacity: 4];
 	[matchersForNextPart addObject: nextMatch];
-	[nextMatch release];
 }
 
 -(BOOL)matchNextElement:(Element*) nextElement forIndex: (int) index{

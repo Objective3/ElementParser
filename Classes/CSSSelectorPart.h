@@ -53,11 +53,11 @@
 }
 
 
-@property (nonatomic, retain) NSString* identifier;
-@property (nonatomic, retain) NSString* tag;
-@property (nonatomic, retain) NSArray* classNames;
-@property (nonatomic, retain) NSString* attrName;
-@property (nonatomic, retain) NSString* attrValue;
+@property (nonatomic, strong) NSString* identifier;
+@property (nonatomic, strong) NSString* tag;
+@property (nonatomic, strong) NSArray* classNames;
+@property (nonatomic, strong) NSString* attrName;
+@property (nonatomic, strong) NSString* attrValue;
 
 -(id)initWithIndex:(int*) index inString:(NSString*)string;
 -(id)initWithIndex:(CFIndex*) index inBuffer:(CFStringInlineBuffer*)buffer;

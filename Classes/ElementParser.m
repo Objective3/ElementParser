@@ -15,7 +15,7 @@
 //	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //	GNU General Public License for more details.
 
-//	Commercial licences without many of the obligations of GPL 
+//	Commercial licences without many of the obligations of GPL
 //	are available for a nomial fee at sales@touchtankapps.com.
 
 //	You should have received a copy of the GNU General Public License
@@ -33,10 +33,10 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 
 @interface ElementParser()
 
-@property (nonatomic, assign) Element* lastOpened;
-@property (nonatomic, assign) Element* lastClosedBeforeOpen;
-@property (nonatomic, retain) DocumentRoot* root;
-@property (nonatomic, retain) Chunk* lastChunk;
+@property (nonatomic, weak) Element* lastOpened;
+@property (nonatomic, weak) Element* lastClosedBeforeOpen;
+@property (nonatomic, strong) DocumentRoot* root;
+@property (nonatomic, strong) Chunk* lastChunk;
 
 -(void)closeAllTags;
 -(void)prepareParseWithString:(NSString*)string;
@@ -61,14 +61,9 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 }
 
 -(void)dealloc{
-	[tagStack release];
-	[root release];
-	[lastChunk release];
 	if (callbackMethods){
 		CFRelease(callbackMethods);
-		[callbackMatchers release];
 	}
-	[super dealloc];	
 }
 
 -(DocumentRoot*)parseHTML:(NSString*)source{
@@ -103,7 +98,7 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 
 -(void)finishParsing{
 	[self parseMoreWithPartial: NO];
-	[self closeAllTags];	
+	[self closeAllTags];
 }
 
 -(NSString*)source{
@@ -121,7 +116,7 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 	int index = lastChunk ? NSMaxRange(lastChunk.range) : 0;
 	NSString* source = [root source];
 	root.contentsLength = [source length];
-	[NSString parseHTML: source delegate: self selector: @selector(buildElementTreeWithChunk:context:) context: self index: &index partial: partial];
+	[NSString parseHTML: source delegate: self selector: @selector(buildElementTreeWithChunk:context:) context: (__bridge void *)(self) index: &index partial: partial];
 }
 
 
@@ -135,9 +130,11 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 		BOOL matchComplete = [matcher matchElement: element];
 		if (matchComplete){
 			SEL selector = (SEL)CFArrayGetValueAtIndex(callbackMethods, i);
-			NSObject* domainObject = [delegate performSelector: selector withObject: element]; 
-			if (domainObject)
-				element.domainObject = domainObject;
+            if([delegate respondsToSelector:selector]) {
+                NSObject* domainObject = [delegate performSelector: selector withObject: element];
+                if (domainObject)
+                    element.domainObject = domainObject;
+            }
 		}
 	}
 }
@@ -156,20 +153,20 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 		// close everything up to found element
 		while ([tagStack count] > depthIndex){//int ii=[tagStack count] - 1; ii >= depth; ii--
 			closedElement = [tagStack lastObject];
-			closedElement.contentsLength = 
-				(tag == nil) ? lastChunk.range.location - NSMaxRange(closedElement.range) : 
-				(tag == closedElement) ? 0 : 
-				tag.range.location - NSMaxRange(closedElement.range);
+			closedElement.contentsLength =
+            (tag == nil) ? lastChunk.range.location - NSMaxRange(closedElement.range) :
+            (tag == closedElement) ? 0 :
+            tag.range.location - NSMaxRange(closedElement.range);
 			if(!tag && closedElement.contentsLength == 0)
 				[self warning: ElementParserGeneralError description:@"Contents may not be right" chunk: closedElement];
-//			NSLog(@"Close %@", [closedElement description]);
+            //			NSLog(@"Close %@", [closedElement description]);
 			self.lastClosedBeforeOpen = closedElement;
 			[tagStack removeObjectsInRange: NSMakeRange([tagStack count] - 1, 1)];
 			if (delegate && callbackMatchers)
 				[self matchElement: closedElement];
 		}
-//		self.lastClosedBeforeOpen = closedElement;
-//		[tagStack removeObjectsInRange: NSMakeRange(i, [tagStack count] - i)];
+        //		self.lastClosedBeforeOpen = closedElement;
+        //		[tagStack removeObjectsInRange: NSMakeRange(i, [tagStack count] - i)];
 	}
 	else{
 		// orphan close tag - ignore
@@ -177,7 +174,7 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 }
 
 -(void)openElement:(Element*) element{
-//	NSLog(@"Open %@", [element description]);
+    //	NSLog(@"Open %@", [element description]);
 	element.parent = [self parentElement];
 	lastOpened.nextElement = element;
 	self.lastClosedBeforeOpen.nextSybling = element;
@@ -202,12 +199,12 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 -(void)warning:(int)code description:(NSString*)description chunk: (Chunk*)chunk{
 	NSLog(@"WARN [index: %i]: %@\n%@", chunk.range.location, description, [chunk description]);
 	/* subclasses should do this work if they want to do something with the warnings
-	NSMutableDictionary* info = [NSMutableDictionary dictionaryWithCapacity: 2];
-	if (description)
-		[info addObject: description forKey: NSLocalizedDescriptionKey];
-	if (chunk)
-		[info addObject: chunk forKey: ElementParserErrorChunk];
-	NSError* error = [NSError errorWithDomain: ElementParserErrorDomain code: code userInfo: info];
+     NSMutableDictionary* info = [NSMutableDictionary dictionaryWithCapacity: 2];
+     if (description)
+     [info addObject: description forKey: NSLocalizedDescriptionKey];
+     if (chunk)
+     [info addObject: chunk forKey: ElementParserErrorChunk];
+     NSError* error = [NSError errorWithDomain: ElementParserErrorDomain code: code userInfo: info];
 	 */
 }
 
@@ -218,16 +215,16 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 }
 
 -(id)buildElementTreeWithChunk:(Chunk*)chunk context:(void*)builder{
-/*
-	used to hunt down problem strings in example documents
-	BOOL breakpoint = [[chunk description] rangeOfString: @""].location != NSNotFound;
-	if (breakpoint)
-		NSLog(@"found breakpoint");
-*/	
+    /*
+     used to hunt down problem strings in example documents
+     BOOL breakpoint = [[chunk description] rangeOfString: @""].location != NSNotFound;
+     if (breakpoint)
+     NSLog(@"found breakpoint");
+     */
 	self.lastChunk = chunk;
 	TagChunk* tag = [chunk isKind: ChunkKindTag] ? (TagChunk*) chunk : nil;
-
-	if (![chunk isKind: ChunkKindText] && ![tag isCloseTag]) 
+    
+	if (![chunk isKind: ChunkKindText] && ![tag isCloseTag])
 		[self parentElement].containsMarkup = YES;
 	
 	if (!tag)
@@ -245,7 +242,6 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 				[self closeElementWithTag: [self parentElement]];
 			[self openElement: element];
 		}
-		[element release];
 	}
 	return self;//to continue parsing
 }
@@ -259,8 +255,6 @@ static NSSet* HTML_TAGS_THAT_SHOULD_BE_EMPTY;
 	CSSSelector* css = [[CSSSelector alloc] initWithString: cssSelector];
 	CSSSelectorMatcher* matcher = [[CSSSelectorMatcher alloc] initWithSelector: css];
 	[callbackMatchers addObject: matcher];
-	[css release];
-	[matcher release];
 }
 
 -(NSString*)description{

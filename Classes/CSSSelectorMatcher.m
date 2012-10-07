@@ -31,18 +31,12 @@
 
 -(id)initWithSelector:(CSSSelector*)aSelector{
 	self = [super init];
-	selector = [aSelector retain];
+	selector = aSelector;
 	rootMatch = [[CSSPartMatcher alloc] initWithElement: nil selectorMatcher: self];
 	matches = [[NSMutableArray alloc] initWithCapacity: 1];
 	return self;
 }
 
--(void)dealloc{
-	[selector release];
-	[rootMatch release];
-	[matches release];
-	[super dealloc];	
-}
 
 -(Element*)firstMatch{
 	return ([matches count] > 0) ? [matches objectAtIndex: 0] : nil;

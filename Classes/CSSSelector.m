@@ -39,10 +39,9 @@
 	chain = [[NSMutableArray alloc] initWithCapacity: 10];
 	unichar c;
 	CFIndex index = 0;
-	while (c = skipWhitespace(&buffer, &index)){
+	while ((c = skipWhitespace(&buffer, &index))){
 		CSSSelectorPart* part = [[CSSSelectorPart alloc] initWithIndex: &index inBuffer: &buffer];
 		[chain addObject: part];
-		[part release];
 		
 		c = skipWhitespace(&buffer, &index);
 		if (!c) break;
@@ -62,11 +61,6 @@
 	return self;
 }
 
--(void)dealloc{
-//	NSLog(@"disposing of %@", [self description]);
-	[chain release];
-	[super dealloc];
-}
 
 -(NSString*)description{
 	NSMutableString* result = [NSMutableString string];

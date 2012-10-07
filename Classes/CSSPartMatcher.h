@@ -37,7 +37,7 @@
 	int matchedPartIndex;
 	NSMutableArray* matchersForNextPart;
 }
-@property (nonatomic, retain) Element* matchedElement;
+@property (nonatomic, strong) Element* matchedElement;
 @property int matchedPartIndex;
 
 -(id)initWithElement:(Element*) anElement selectorMatcher:(CSSSelectorMatcher*)aSelectorMatcher;

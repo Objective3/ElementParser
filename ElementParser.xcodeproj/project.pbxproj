@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1A92FC1621AFD4002D8124 /* StripTagsContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E1A92FA1621AFD4002D8124 /* StripTagsContext.h */; };
+		0E1A92FD1621AFD4002D8124 /* StripTagsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A92FB1621AFD4002D8124 /* StripTagsContext.m */; };
 		3F4E18B3102DD2FA00320118 /* CDataChunk.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E1891102DD2FA00320118 /* CDataChunk.h */; };
 		3F4E18B4102DD2FA00320118 /* CDataChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E1892102DD2FA00320118 /* CDataChunk.m */; };
 		3F4E18B5102DD2FA00320118 /* Chunk.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4E1893102DD2FA00320118 /* Chunk.h */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E1A92FA1621AFD4002D8124 /* StripTagsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StripTagsContext.h; path = Classes/StripTagsContext.h; sourceTree = "<group>"; };
+		0E1A92FB1621AFD4002D8124 /* StripTagsContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StripTagsContext.m; path = Classes/StripTagsContext.m; sourceTree = "<group>"; };
 		3F4E1891102DD2FA00320118 /* CDataChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDataChunk.h; path = Classes/CDataChunk.h; sourceTree = "<group>"; };
 		3F4E1892102DD2FA00320118 /* CDataChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDataChunk.m; path = Classes/CDataChunk.m; sourceTree = SOURCE_ROOT; };
 		3F4E1893102DD2FA00320118 /* Chunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chunk.h; path = Classes/Chunk.h; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				3F4E18AE102DD2FA00320118 /* TagChunk.m */,
 				3F4E18B0102DD2FA00320118 /* TxtChunk.m */,
 				3F4E18B2102DD2FA00320118 /* URLParser.m */,
+				0E1A92FB1621AFD4002D8124 /* StripTagsContext.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				3F4E18AD102DD2FA00320118 /* TagChunk.h */,
 				3F4E18AF102DD2FA00320118 /* TxtChunk.h */,
 				3F4E18B1102DD2FA00320118 /* URLParser.h */,
+				0E1A92FA1621AFD4002D8124 /* StripTagsContext.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -206,6 +212,7 @@
 				3F4E18CF102DD2FA00320118 /* TagChunk.h in Headers */,
 				3F4E18D1102DD2FA00320118 /* TxtChunk.h in Headers */,
 				3F4E18D3102DD2FA00320118 /* URLParser.h in Headers */,
+				0E1A92FC1621AFD4002D8124 /* StripTagsContext.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +243,11 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "ElementParser" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* ElementParser */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
@@ -269,6 +280,7 @@
 				3F4E18D0102DD2FA00320118 /* TagChunk.m in Sources */,
 				3F4E18D2102DD2FA00320118 /* TxtChunk.m in Sources */,
 				3F4E18D4102DD2FA00320118 /* URLParser.m in Sources */,
+				0E1A92FD1621AFD4002D8124 /* StripTagsContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +292,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/ElementParser.dst;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -290,6 +303,7 @@
 				GCC_PREFIX_HEADER = ElementParser_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = ElementParser;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -298,12 +312,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/ElementParser.dst;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ElementParser_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = ElementParser;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -317,7 +333,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = iphoneos6.0;
 			};
 			name = Debug;
 		};
@@ -330,7 +346,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos6.0;
 			};
 			name = Release;
 		};
