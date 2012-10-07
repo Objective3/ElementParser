@@ -49,7 +49,6 @@
 			len = lenToken(buffer, *index + 1);
 			assert(len);
 			self.identifier = createStringFromBuffer(buffer, *index + 1, len);
-			[self.identifier release];//retained by property setter
 			(*index) += len + 1;
 		}
 		else if (c == '.'){
@@ -60,7 +59,6 @@
 				classNames = [[NSMutableArray alloc] initWithObjects: className, nil];
 			else
 				[classNames addObject: className];
-			[className release];
 			(*index) += len + 1;
 		}
 		else if (c == '['){
@@ -69,7 +67,6 @@
 			len = lenToken(buffer, *index);
 			assert(len);
 			self.attrName = createStringFromBuffer(buffer, *index, len);
-			[self.attrName release];//retained by property setter
 			(*index) += len;
 			
 			c = skipWhitespace(buffer, index);
@@ -94,7 +91,6 @@
 					assert(len);
 					self.attrValue = createStringFromBuffer(buffer, *index, len);
 				}
-				[self.attrValue release];//retained by property setter
 				(*index) += len;
 				c = skipWhitespace(buffer, index);
 			}
@@ -107,7 +103,6 @@
 			len = lenToken(buffer, (*index));
 			assert(len);
 			self.tag = createStringFromBuffer(buffer, *index, len);
-			[self.tag release];//retained by property setter
 			(*index) += len;
 		}
 		c = CFStringGetCharacterFromInlineBuffer(buffer, *index);
@@ -115,14 +110,6 @@
 	return self;
 }
 
--(void)dealloc{
-	[identifier release];
-	[tag release];
-	[classNames release];
-	[attrName release];
-	[attrValue release];
-	[super dealloc];
-}
 
 -(BOOL)matchesElement:(Element*)element{
 	if(element.range.length == 0) return NO; //ElementParser's root

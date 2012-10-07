@@ -39,8 +39,8 @@
 	CSSPartMatcher* rootMatch;
 	NSMutableArray* matches;
 }
-@property (nonatomic, retain) CSSSelector* selector;
-@property (nonatomic, retain) NSMutableArray* matches;
+@property (nonatomic, strong) CSSSelector* selector;
+@property (nonatomic, strong) NSMutableArray* matches;
 
 -(id)initWithSelector:(CSSSelector*)selector;
 -(BOOL)matchElement:(Element*) element;

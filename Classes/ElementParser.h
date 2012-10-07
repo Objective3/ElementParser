@@ -40,20 +40,20 @@ typedef enum{
 @interface ElementParser : NSObject {
 	NSMutableArray* tagStack;
 	DocumentRoot* root;
-	Element* lastOpened; //assigned
-	Element* lastClosedBeforeOpen;
+	Element* __weak lastOpened; //assigned
+	Element* __weak lastClosedBeforeOpen;
 	Chunk* lastChunk;
 
 	CFMutableArrayRef callbackMethods;
 	NSMutableArray* callbackMatchers;
-	id delegate;
+	id __weak delegate;
 	ElementParserMode mode;
 }
 
 /** 
  *	The delegate that is called when selectors match
  */
-@property (nonatomic, assign) id delegate;
+@property (nonatomic, weak) id delegate;
 
 /** 
  *	HTML or XML
@@ -64,7 +64,7 @@ typedef enum{
 /** 
  *	The source being parsed.
  */
-@property (readonly) NSString* source;
+@property (weak, readonly) NSString* source;
 
 
 /** 

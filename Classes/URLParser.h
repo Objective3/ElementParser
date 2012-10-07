@@ -32,17 +32,17 @@
 	ElementParser* parser;
 	NSString* contentType;
 	NSStringEncoding encoding;
-	NSObject* connectionDelegate;
+	id __weak connectionDelegate;
 	NSMutableData* partialStringData;
 }
 
-@property(retain, nonatomic) NSObject* connectionDelegate;
-@property(retain, readonly) NSURLConnection* connection;
-@property(retain, readonly) ElementParser* parser;
-@property(retain, nonatomic) NSError* lastError;
-@property(retain, nonatomic) NSString* contentType;
+@property(weak, nonatomic) id connectionDelegate;
+@property(strong, readonly) NSURLConnection* connection;
+@property(strong, readonly) ElementParser* parser;
+@property(strong, nonatomic) NSError* lastError;
+@property(strong, nonatomic) NSString* contentType;
 @property NSStringEncoding encoding;
-@property (retain, nonatomic) NSMutableData* partialStringData;
+@property (strong, nonatomic) NSMutableData* partialStringData;
 
 
 -(id)initWithCallbackDelegate:(id)delegate;
@@ -50,4 +50,11 @@
 -(void)parseURL:(NSURL*) url;
 -(void)cancelLoading;
 
+@end
+
+@protocol URLParser
+- (void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSURLResponse *)response;
+- (void)connection:(NSURLConnection *)aConnection didFailWithError:(NSError *)error;
+- (void)connection:(NSURLConnection *)aConnection didReceiveData:(NSData *)data;
+- (void)connectionDidFinishLoading:(NSURLConnection *)aConnection;
 @end

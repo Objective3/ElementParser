@@ -40,17 +40,13 @@
 }
 
 -(id)initWithString: (NSString*)aSource range:(NSRange)aRange tagName:(NSString*)aTagName{
-	source = [aSource retain];
+	source = aSource;
 	range = aRange;
-	tagName = [aTagName retain];
+	tagName = aTagName;
 	compareOptions = NSCaseInsensitiveSearch;
 	return self;
 }
 
--(void)dealloc{
-	[tagName release];
-	[super dealloc];
-}
 
 -(NSRange)interiorRange{
 	return NSMakeRange(range.location +1, range.length - 2);

@@ -36,7 +36,7 @@
 	BOOL attributesParsed;
 	Element* nextElement;
 	Element* nextSybling;
-	Element* parent;
+	Element* __weak parent;
 	int contentsLength;
 	NSString* contentsText;
 	NSString* key;
@@ -50,21 +50,21 @@
  *	If an attribute had no value in the source (e.g. <table noborders>) then the value will be NSNull
  *	If the attributes have not yet been parsed, this will parser them first.
  */
-@property (nonatomic, readonly) NSDictionary* attributes;
+@property (weak, nonatomic, readonly) NSDictionary* attributes;
 
 
 /**	
  *	The character data inside the element. This text is stripped of tags, whitespace, etc
  *	by stripTags. To see the actual source within the element, use contentsSource
  */
-@property (nonatomic, retain) NSString* contentsText;
+@property (nonatomic, strong) NSString* contentsText;
 
 
 /**	
  *	A case-normalized version of the tagName when appropriate. Used in situations
  *	where the tag name might need to serve as a key into a dictionary
  */
-@property (nonatomic, retain) NSString* key;
+@property (nonatomic, strong) NSString* key;
 
 /**	
  *	One or more chunks where encountered within this element
@@ -82,25 +82,25 @@
 /**	
  *	The next Element encountered in the document
  */
-@property (nonatomic, retain) Element* nextElement;
+@property (nonatomic, strong) Element* nextElement;
 
 
 /**	
  *	The next sybling Element (ie the Element at the same depth with the same parent)
  */
-@property (nonatomic, retain) Element* nextSybling;
+@property (nonatomic, strong) Element* nextSybling;
 
 
 /**	
  *	The parent Element to this Element
  */
-@property (nonatomic, assign) Element* parent;
+@property (nonatomic, weak) Element* parent;
 
 
 /**	
  *	Available for developer's use to hang an object onto this Element
  */
-@property (nonatomic, retain) NSObject* domainObject;
+@property (nonatomic, strong) NSObject* domainObject;
 
 
 /**	

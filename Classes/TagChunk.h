@@ -39,7 +39,7 @@
 /** 
 	The name of the tag. include leading '/' for close tags 
  */
-@property (nonatomic, retain) NSString* tagName;
+@property (nonatomic, strong) NSString* tagName;
 
 
 /** 

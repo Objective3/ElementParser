@@ -56,7 +56,7 @@
 /**	
 	The string that contains the whole source being parsed. 
  */
-@property (nonatomic, retain) NSString* source;
+@property (nonatomic, strong) NSString* source;
 
 
 /**	
